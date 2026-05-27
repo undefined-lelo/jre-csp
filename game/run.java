@@ -59,7 +59,7 @@ public class run {
                 System.exit(0);
             }
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            System.out.println(colors.ansi_red + "Error reading file: " + colors.ansi_reset + e.getMessage());
         }
-    }
+    }   
 }
