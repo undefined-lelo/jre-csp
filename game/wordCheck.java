@@ -41,17 +41,20 @@ public class wordCheck {
                 notValid.add(gc);
             }
         }
-
-        System.out.print("Correct letters (by position): ");
-        for (char c : correctPositions) System.out.print(c + " ");
-        System.out.println();
-        System.out.print("Wrong placement letters: ");
-        if (wrongPlacement.isEmpty()) System.out.print("none");
-        else for (char c : wrongPlacement) System.out.print(c + " ");
-        System.out.println();
-        System.out.print("Not valid letters: ");
-        if (notValid.isEmpty()) System.out.print("none");
-        else for (char c : notValid) System.out.print(c + " ");
-        System.out.println();
+        if (correctPositions.length != 0) {
+            System.out.print(colors.ansi_green + "Correct letters (by position): ");
+            for (char c : correctPositions) System.out.print(c + " ");
+            System.out.println(colors.ansi_reset);
+        }
+        if (wrongPlacement.size() > 0) {
+            System.out.print(colors.ansi_red + "Wrong placement letters: ");
+            for (char c : wrongPlacement) System.out.print(c + " ");
+            System.out.println(colors.ansi_reset);
+        }
+        if (notValid.size() > 0) {
+            System.out.print(colors.ansi_yellow + "Non-used letters: ");
+            for (char c : notValid) System.out.print(c + " ");
+            System.out.println(colors.ansi_reset);
+        }
     }
 }

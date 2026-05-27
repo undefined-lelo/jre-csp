@@ -1,7 +1,5 @@
 package game;
 
-import static game.colors.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,8 +11,7 @@ public class run {
 
     public static void main(String[] args) {
         try {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            clearConsole.clear();
             // init
             score sc = new score();
             sc.loadScore();
@@ -33,7 +30,7 @@ public class run {
             }
 
             if (words.isEmpty()) {
-                System.out.println("No words found in the file.");
+                System.out.println(colors.ansi_red + "No words found in the file." + colors.ansi_reset);
                 return;
             }
 
@@ -44,14 +41,23 @@ public class run {
             while (!guess.equals(randomWord)) {
                 wordCheck.check(guess, randomWord);
                 guessCount++;
-                System.out.println(ansi_red + "Wrong! Try again." + ansi_reset);
+                System.out.println(colors.ansi_red + "Wrong! Try again." + colors.ansi_reset);
                 guess = input.nextLine().trim().toLowerCase();
             }
 
-            System.out.println(ansi_green + "Correct! The word was: " + randomWord + ansi_reset);
+            System.out.println(colors.ansi_green + "Correct! The word was " + colors.ansi_cyan_underline + randomWord + colors.ansi_reset);
             sc.incrementAndSave();
-            System.out.println("Your new score is: " + sc.getScore());
-            System.out.println("You took " + guessCount + " guesses.");
+            System.out.println("Your new score is: " + colors.ansi_cyan_underline + sc.getScore() + colors.ansi_reset);
+            System.out.println("You took " + colors.ansi_cyan_underline + (guessCount + 1) + colors.ansi_reset + " guesses.");
+            System.out.println();
+            System.out.print("Do you want to play again? (yes/no): ");
+            String newRound = input.nextLine();
+
+            if (newRound.equalsIgnoreCase("yes")) {
+                main(args);
+            } else {
+                System.exit(0);
+            }
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }

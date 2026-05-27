@@ -22,9 +22,8 @@ public class score {
                 try (PrintWriter out = new PrintWriter(scoreFile)) {
                     out.println("{\n    \"score\": 0\n}");
                 }
-                System.out.println("Created score file.");
             } catch (IOException ex) {
-                System.out.println("Error creating score file: " + ex.getMessage());
+                System.out.println(colors.ansi_red + "Error creating score file: " + colors.ansi_reset + ex.getMessage());
             }
             score = 0;
             return score;
@@ -50,9 +49,9 @@ public class score {
         } catch (FileNotFoundException e) {
             // create file if not found
             try (PrintWriter out = new PrintWriter(scoreFile)) {
-                out.println("{\"score\":0}");
+                out.println("{\n    \"score\": 0\n}");
             } catch (IOException ex) {
-                System.out.println("Error creating score file: " + ex.getMessage());
+                System.out.println(colors.ansi_red + "Error creating score file: " + colors.ansi_reset + ex.getMessage());
             }
             score = 0;
         }
@@ -61,9 +60,9 @@ public class score {
 
     public void saveScore() {
         try (PrintWriter out = new PrintWriter(scoreFile)) {
-            out.println("{\"score\":" + score + "}");
+            out.println("{\n    \"score\": " + score + "\n}");
         } catch (IOException e) {
-            System.out.println("Error saving score: " + e.getMessage());
+            System.out.println(colors.ansi_red + "Error saving score: " + colors.ansi_reset + e.getMessage());
         }
     }
 

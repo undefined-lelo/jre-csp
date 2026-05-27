@@ -6,4 +6,5 @@ public class colors {
     public static final String ansi_green = "\u001B[32m";
     public static final String ansi_yellow = "\u001B[33m";
     public static final String ansi_reset = "\u001B[0m";
+    public static final String ansi_cyan_underline = "\u001B[4;36m";
 }
