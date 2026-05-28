@@ -41,7 +41,6 @@ public class run {
             while (!guess.equals(randomWord)) {
                 wordCheck.check(guess, randomWord);
                 guessCount++;
-                System.out.println(colors.ansi_red + "Wrong! Try again." + colors.ansi_reset);
                 guess = input.nextLine().trim().toLowerCase();
             }
 

@@ -47,12 +47,12 @@ public class wordCheck {
             System.out.println(colors.ansi_reset);
         }
         if (wrongPlacement.size() > 0) {
-            System.out.print(colors.ansi_red + "Wrong placement letters: ");
+            System.out.print(colors.ansi_yellow + "Wrong placement letters: ");
             for (char c : wrongPlacement) System.out.print(c + " ");
             System.out.println(colors.ansi_reset);
         }
         if (notValid.size() > 0) {
-            System.out.print(colors.ansi_yellow + "Non-used letters: ");
+            System.out.print(colors.ansi_red + "Non-used letters: ");
             for (char c : notValid) System.out.print(c + " ");
             System.out.println(colors.ansi_reset);
         }
