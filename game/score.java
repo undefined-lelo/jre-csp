@@ -37,7 +37,14 @@ public class score {
             Matcher m = p.matcher(content);
             if (m.find()) {
                 try {
-                    score = Integer.parseInt(m.group(1));
+                    if (Integer.parseInt(m.group(1)) < 0) {
+                        score = 0;
+                    } else if (Integer.parseInt(m.group(1)) > 9999) {
+                        System.out.println(colors.ansi_yellow + "You have exceeded 9999, your score has been reset to 0." + colors.ansi_reset);
+                        score = 0;
+                    } else {
+                        score = Integer.parseInt(m.group(1));
+                    }
                 } catch (NumberFormatException e) {
                     score = 0;
                 }
